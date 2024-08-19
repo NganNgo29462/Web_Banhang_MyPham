@@ -1,0 +1,237 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Doan_thuchanhnghenghiep.SiteMaster" %>
+<!DOCTYPE html>
+<html >
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+        <asp:ContentPlaceHolder ID="head" runat="server">  </asp:ContentPlaceHolder>
+    <style type="text/css">
+ header{
+    position:  relative;
+    top:0;
+    left: 0;
+    right:0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(197, 162, 93, 0.2);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 80;
+    font-family: "Plus Jakarta Sans",sans-serif;
+}
+.head{
+    background-color: #FEFBF4;
+}
+.logo .logoimg{
+    display: flex;
+    width: 200px;
+    height: 200px;
+    margin-right: 190px;
+    align-items: center;
+}
+.navigation a{
+    position: relative;
+    font-size: 1.1em;
+    color: #C5A25D;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+.navigation a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background: #C5A25D;
+    border-radius: 5px;
+    transform-origin: center;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+.navigation a:hover::after{
+    transform: scaleX(1);
+}
+.navigation .btnLogin{
+    width: 35px;
+    height: 35px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: #C5A25D;
+    font-weight: 500;
+    margin-right: 40px;
+    transition: .5s;
+}
+.navigation .btnLogin:last-child{
+    margin-right: 70px;
+}
+body{
+    font-family: "Plus Jakarta Sans",sans-serif;
+}
+.footer_area{
+    margin-top:0 ;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main{
+    width: 100%;
+    margin: 0;
+    background-color: rgba(31, 28, 23);
+}
+.footer{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.single_footer{
+    width: 380px;
+}
+.single_footer h4{
+    text-transform: capitalize;
+    font-size: 22px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    color: rgba(197, 162, 93);
+}
+.single_footer .icon{
+    color: rgba(197, 162, 93);
+    border: 1px solid rgba(197, 162, 93);
+    font-size: 1.2em;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    text-align: center;
+    align-items: center;
+    line-height: 43px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.single_footer ul{
+    list-style: none;
+}
+.single_footer ul li{
+    margin-bottom: 20px;
+    position: relative;
+}
+.single_footer ul li a{
+    color: rgba(197, 162, 93);
+    text-decoration: none;
+    font-weight: 500px;
+    transition: .5s;
+}
+.single_footer ul li a:hover{
+    text-decoration: underline;
+}
+.navigation ul{
+    list-style: none;
+    width:500px;
+    text-align: center;
+}
+.navigation ul li{
+    display:inline-block;
+    position: relative;
+}
+.navigation ul li a{
+    display:block;
+    padding: 10px 10px;
+    font-size:16px;
+    color:#C5A25D;
+    text-decoration:none;
+    text-align:center;
+}
+.navigation ul li ul.dropdown li{
+    display:block;
+    background:  #F3ECDF;
+    width: 250px;
+}
+.navigation ul li ul.dropdown{
+    width:0;
+    position: absolute;
+    z-index:99;
+    display:none;
+}
+.navigation ul li:hover ul.dropdown{
+    display:block;
+}
+</style>
+</head>
+<body>
+    <form runat="server">   
+        <!-- Header -->
+    <header>
+        <nav class="navigation">
+            <ul>
+                <li><a href="#">Sản phẩm</a>
+                <ul class="dropdown">
+                    <li><a href="Sanpham.aspx">Tất cả sản phẩm</a></li>
+                    <li><a href="Chamsocda.aspx">Chăm sóc da</a></li>
+                    <li><a href="Chamsoctoc.aspx">Chăm sóc tóc</a></li>
+                    <li><a href="Tamduongthe.aspx">Tắm & Dưỡng thể</a></li>
+                    <li><a href="Duongmoi.aspx">Dưỡng môi</a></li>
+                    <li><a href="Combo.aspx">Combo/Bộ sản phẩm</a></li>
+                </ul>
+                </li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+          </nav>
+        <div class="logo">
+            <img class="logoimg" src="https://cocoonvietnam.com/_nuxt/img/logo.f502f17.svg">
+        </div>
+        <nav class="navigation">
+            <asp:ImageButton ID="BTsearch" class="btnLogin" runat="server" ImageUrl="~/Hinh/iconhome.PNG" OnClick="btnSearch_Click" Height="35px"  Width="35px"/>
+            <asp:ImageButton ID="BTcart" class="btnLogin" runat="server" ImageUrl="~/Hinh/carticon.PNG" OnClick="btnCart_Click" Height="35px"  Width="35px"/>
+            <asp:ImageButton ID="BTlogin" class="btnLogin" runat="server" ImageUrl="~/Hinh/loginicon.PNG" OnClick="btnLogin_Click" Height="35px"  Width="35px"/> 
+        </nav>
+    </header>
+    <section id="homecontent">
+        <asp:ContentPlaceHolder ID="cph_homecontent" runat="server"></asp:ContentPlaceHolder>
+    </section>
+        <!-- Footer -->
+        <footer class="footer_area">
+        <div class="main">
+            <div class="footer">
+            <div class="single_footer">
+                <h4>Hỗ trợ</h4>
+                <ul>
+                    <li><a href="">Hỏi đáp</a></li>
+                    <li><a href="https://cocoonvietnam.com/trang/chinh-sach-ban-hang">Chính sách bán hàng</a></li>
+                    <li><a href="https://cocoonvietnam.com/trang/dieu-khoan-bao-mat">Điều khoản bảo mật</a></li>
+                    <li><a href="https://cocoonvietnam.com/trang/dieu-kien-chung">Điều kiện chung</a></li>
+                    <li><a href="">Liên hệ chúng tôi</a></li>
+                </ul>
+            </div>
+            <div class="single_footer">
+                <h4>Về Cocoon</h4>
+                <ul>
+                    <li><a href="https://cocoonvietnam.com/trang/cau-chuyen-thuong-hieu">Câu chuyện thương hiệu</a></li>
+                    <li><a href="">Giá trị cốt lõi</a></li>
+                    <li><a href="">Trách nhiệm cộng đồng</a></li>
+                    <li><a href="">Tìm hiểu nguyên liệu</a></li>
+                </ul>
+            </div>
+            <div class="single_footer">
+                <h4>Mạng xã hội</h4>
+                <ul>
+                    <li><span class="icon"><ion-icon name="logo-facebook"></ion-icon></span><a href="https://www.facebook.com/CocoonVietnamOfficial">Facebook</a></li>
+                    <li><span class="icon"><ion-icon name="logo-instagram"></ion-icon></span><a href="https://www.instagram.com/cocoon.vietnam">Instagram</a></li>
+                    <li><span class="icon"><ion-icon name="logo-youtube"></ion-icon></span><a href="https://www.youtube.com/channel/UChaXgZ8kSpQDFgfm2X-kwTg">Youtube</a></li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </footer>
+    </form>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

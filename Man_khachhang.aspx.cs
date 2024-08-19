@@ -1,0 +1,92 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Doan_thuchanhnghenghiep
+{
+    public partial class Man_khachhang : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+           
+        }
+        protected void btnSaveProduct_Click(object sender, EventArgs e)
+        {
+            Session["txtMaKH"] = txtMaKH;
+            Session["txtTenKH"] = txtTenKH;
+            Session["txtGioitinhKH"] = txtGioitinhKH;
+            Session["txtNgaysinhKH"] = txtNgaysinhKH;
+            Session["txtSoDT"] = txtSoDT;
+                     string connectionString = "Data Source=DESKTOP-K9332PT;Initial Catalog=QLMP;" + "Trusted_Connection=True;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string sqlCommand = "INSERT INTO KhachHang (MaKH,TenKH, GioitinhKH, NgaysinhKH, SoDT) " +
+                    "VALUES (@MaKH,@TenKH, @GioitinhKH, @NgaysinhKH, @SoDT);";
+                using (SqlCommand command = new SqlCommand(sqlCommand, connection))
+                {
+                    command.Parameters.AddWithValue("@MaKH", txtMaKH.Text.Trim());
+                    command.Parameters.AddWithValue("@TenKH", txtTenKH.Text.Trim());
+                    command.Parameters.AddWithValue("@GioitinhKH", txtGioitinhKH.Text.Trim());
+                    command.Parameters.AddWithValue("@NgaysinhKH", txtNgaysinhKH.Text.Trim());
+                    command.Parameters.AddWithValue("@SoDT", txtSoDT.Text.Trim());                   
+                    try
+                    {
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            lblStatus.Text = "Khách hàng đã được thêm thành công.";
+                            ClearTextBoxes();
+                            grdKhachHang.DataBind();
+                        }
+                        else
+                        {
+                            lblStatus.Text = "Lỗi: Không thể thêm khách hàng.";
+                        }
+                    }
+                    catch (SqlException ex)
+                    {
+                        lblStatus.Text = "Lỗi cơ sở dữ liệu: " + ex.Message;
+                    }
+                }
+            }
+        }
+        private void ClearTextBoxes()
+        {
+            txtMaKH.Text = string.Empty;
+            txtTenKH.Text = string.Empty;
+            txtGioitinhKH.Text = string.Empty;
+            txtNgaysinhKH.Text = string.Empty;
+            txtSoDT.Text = string.Empty;          
+        }
+        protected void btnShowModal_Click(object sender, EventArgs e)
+        {
+            pnlModal.Style["display"] = "block";
+            modalBackground.Style["display"] = "block";
+        }
+        protected void btnCloseModal_Click(object sender, EventArgs e)
+        {
+            pnlModal.Style["display"] = "none";
+            modalBackground.Style["display"] = "none";
+        }
+        protected void grdKhachHang_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int rowIndex = e.Row.RowIndex + 1 + (grdKhachHang.PageIndex * grdKhachHang.PageSize);
+                Label lblSTT = (Label)e.Row.FindControl("lblSTT");
+                if (lblSTT != null)
+                {
+                    lblSTT.Text = rowIndex.ToString();
+                }
+            }
+        }
+       
+       
+    }
+}

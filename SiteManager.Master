@@ -1,0 +1,131 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteManager.master.cs" Inherits="Doan_thuchanhnghenghiep.SiteManager" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        header{
+            position:  relative;
+            top:0;
+            left: 0;
+            right:0;
+            width: 100%;
+            height: 70px;
+            background-color: rgba(197, 162, 93, 0.2);
+            backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 80;
+            font-family: "Plus Jakarta Sans",sans-serif;
+        }
+        .logo .logoimg{
+            display: flex;
+            width: 200px;
+            height: 200px;
+            margin-right: 500px;
+            margin-left: 650px;
+            align-items: center;
+        }
+        .auto-style4 {
+            width: 970px;
+        }
+        .auto-style6 {
+            width: 400px;
+        }
+        .auto-style7 {
+            width: 307px;
+            margin-left: 0px;
+        }
+        .auto-style8 {
+            width: 1499px;
+            
+        }
+        .auto-style8 tr{
+            background-color: rgba(31, 28, 23);
+        }
+        .auto-style9 {
+            width: 1510px;
+        }
+        .tb {
+            margin-top: 10px;
+            width: 1510px;
+        }
+        .tb td{
+            width: 70px;
+        }
+        .tb td a{
+            font-size: 16px;
+        }
+        .tb th{
+            height: 100px;
+        }
+        .auto-style11 {
+            width: 978px;
+        }
+        .tb td a::after{
+            text-decoration:underline;
+            background-color:white;
+            color:rgba(197, 162, 93, 1);
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <img class="logoimg" src="https://cocoonvietnam.com/_nuxt/img/logo.f502f17.svg">
+            </div>
+        </header>
+        <div class="auto-style9">
+<p style="font-family: 'Plus Jakarta Sans'; color: rgba(197, 162, 93, 1); font-size: 32px; text-align: center;">QUẢN LÝ BÁN HÀNG</p><br />
+                <table class="tb">
+                <tr style="background-color: rgba(197, 162, 93, 1);height:50px; text-align: center; font-family: 'Segoe UI';">
+                    <td >
+                        <a href="Man_Thongke.aspx" style="color: #FFFFFF; text-decoration: none;">Thống kê</a>
+                    </td><td >
+                        <a href="Man_nguoidung.aspx" style="color: #FFFFFF; text-decoration: none;">Quản lý người dùng</a>
+                    </td><td>
+                        <a href="Man_khachhang.aspx" style="color: #FFFFFF; text-decoration: none;">Quản lý khách hàng</a>
+                    </td><td>
+                        <a href="Man_sanpham.aspx" style="color: #FFFFFF; text-decoration: none;">Quản lý sản phẩm</a>
+                    </td><td>
+                        <a href="Man_loaisanpham.aspx" style="color: #FFFFFF; text-decoration: none;">Quản lý loại sản phẩm</a>
+                    </td><td>
+                        <a href="Man_dongsanpham.aspx" style="color: #FFFFFF; text-decoration: none;">Quản lý dòng sản phẩm</a>
+                    </td><td >
+                        <a href="Man_hoadon.aspx" style="color: #FFFFFF; text-decoration: none;">Quản lý hóa đơn</a>
+                    </td><td >
+                        <a href="Man_cthoadon.aspx" style="color: #FFFFFF; text-decoration: none;">Quản lý chi tiết hóa đơn</a>
+                    </td>                 
+                </tr>
+            </table> <br /><br />
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <section id="homecontent2">
+                <asp:ContentPlaceHolder ID="cph_homecontent2" runat="server"></asp:ContentPlaceHolder>
+            </section>
+            <br /><br />
+            <!-- Footer -->
+            <table class="auto-style8">
+                <th colspan="3" style="font-family: 'Times New Roman'; font-size: medium; text-align: right; background-color: white;">
+                    <a href="Home.aspx" style="font-family: 'Times New Roman'; font-size: 24px; text-align: right; text-decoration: none; color: #000000; ">Thoát </a>
+                </th>
+                <tr style="background-color: rgba(31, 28, 23);"><th  colspan="3" style="background-color: rgba(31, 28, 23)"></th></tr>
+                <tr>
+                    <th rowspan="2"  >
+                        <div class="auto-style6">
+                        <p style="font-family: 'Segoe UI'; color: rgba(197, 162, 93, 1); font-size: 24px">@Ngô Kim Ngân</p>
+                            </div>
+                    </th>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
+
